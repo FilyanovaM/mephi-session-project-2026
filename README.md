@@ -39,6 +39,9 @@ rpm -ivh /tmp/tcpdump-*.rpm
 # Сохранение артефактов
 dnf history list > /home/marinafilyanova/dnf.out
 ```
+#### Подтверждение выполнения
+![](screenhot_1.png)
+![](screenhot_2.png)
 
 ### Раздел 3. Управление файловыми системами
 ```bash
@@ -70,7 +73,8 @@ mount | grep mephi-web
 cp /etc/fstab /home/marinafilyanova/fstab
 ```
 #### Подтверждение выполнения
-
+![](screenhot_3.png)
+![](screenhot_4.png)
 
 ### Раздел 4. Управление сервисами
 ```bash
@@ -84,7 +88,7 @@ systemctl status nginx
 journalctl -u nginx -b > /home/marinafilyanova/journalctl.out
 ```
 #### Подтверждение выполнения
-
+![](screenhot_5.png)
 
 ### Раздел 5. Управление доступом
 ```bash
@@ -150,7 +154,9 @@ semanage fcontext -a -t httpd_sys_content_t "/mephi-web(/.*)?"
 restorecon -Rv /mephi-web
 ```
 #### Подтверждение выполнения
-
+![](screenhot_6.png)
+![](screenhot_7.png)
+![](screenhot_8.png)
 
 ### Раздел 6. Аутентификация
 ```bash
@@ -174,6 +180,8 @@ chage -M 90 curator2
 sed -i 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS 90/' /etc/login.defs
 sed -i 's/^PASS_MIN_LEN.*/PASS_MIN_LEN 12/' /etc/login.defs 
 ```
+#### Подтверждение выполнения
+![](screenhot_9.png)
 
 ### Раздел 7. Тестирование
 ```bash
@@ -187,6 +195,8 @@ curl http://localhost/
 curl http://localhost/ > /home/marinafilyanova/curl.out
 history > /home/marinafilyanova/history.out
 ```
+#### Подтверждение выполнения
+![](screenhot_10.png)
 
 ## Описание артефактов (файлов в репозитории)
 
