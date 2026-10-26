@@ -1,0 +1,17 @@
+    1  ip -a
+    2  ip a
+    3  nmcli device status 
+    4  nmcli connection modify "enp0s9" ipv4.method auto ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
+    5  nmcli connection modify "enp0s8" ipv4.method auto ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
+    6  nmcli device show
+    7  nmcli connection modify "Проводное подключение 1 " ipv4.method auto ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
+    8  nmcli connection modify "Проводное подключение 1" ipv4.method auto ipv4.addresses "" ipv4.gateway "" ipv4.dns ""
+    9  nmcli connection up "Проводное подключение 1" 
+   10  hostnamectl set-hostname mephi-2026.domain.local
+   11  ping -c 4 8.8.8.8 > /home/marinafilyanova/ping.out
+   12  dnf update -yy
+   13  dnf update -y
+   14  su -
+   15  history -w
+   16  su -
+   17  history > /home/marinafilyanova/history2.out
