@@ -207,13 +207,13 @@ history > /home/marinafilyanova/history.out
 | `history2.out` | Все | История выполненных команд в терминале (под правами пользователя). |
 | `ping.out` | 1 | Проверка сетевой связности. |
 | `dnf.out` | 2 | История транзакций менеджера пакетов. |
-| `stat.out` | |  |
+| `stat.out` | 5 | Вывод команды `stat` для `/data/mephi-2026`. |
 | `journalctl.out` | 4 | Журнальные сообщения сервиса nginx. |
 | `getcap.out` | 5 | Список capabilities файла tcpdump. |
 | `getenforce.out` | 5 | Текущий режим SELinux. |
-| `curl.out` | | |
-| `fstab` | 3 | Содержимое файла /etc/fstab.|
-| `passwd` | | |
-| `shadow` | | |
-| `group` | | |
-| `pwquality.conf` | | |
+| `curl.out` | 7 | Вывод curl — содержимое веб-страницы. |
+| `fstab` | 3 | Содержимое файла `/etc/fstab`.|
+| `passwd` | 5 | Содержимое файла `/etc/passwd`. |
+| `shadow` | 6 | Содержимое файла `/etc/shadow`. |
+| `group` | 5 | Содержимое файла `/etc/group`. |
+| `pwquality.conf` | 6 | Настройка минимальной длины пароля. |
