@@ -154,34 +154,39 @@ restorecon -Rv /mephi-web
 
 ### Раздел 6. Аутентификация
 ```bash
+# Добавление правила PAM access
+echo "-:curator1 curator2:LOCAL" >> /etc/security/access.conf
 
+# Добавление строки подключения модуля pam_access
+grep -q "account.*pam_access.so" /etc/pam.d/login || echo "account required pam_access.so" >> /etc/pam.d/login
+
+# Установка минимальной длины пароля 12 символов в политике качества паролей
+echo "minlen = 12" >> /etc/security/pwquality.conf
+
+# Установка для пользователей максимальный срок действия пароля
+chage -M 90 user1
+chage -M 90 user2
+chage -M 90 user3
+chage -M 90 curator1
+chage -M 90 curator2
+
+# Установка срок действия и минимальной длины пароля по умолчанию для новых пользователей
+sed -i 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS 90/' /etc/login.defs
+sed -i 's/^PASS_MIN_LEN.*/PASS_MIN_LEN 12/' /etc/login.defs 
 ```
 
 ### Раздел 7. Тестирование
 ```bash
+# Создание файла index.html в корне веб-каталога
+echo "Hello from Student: 373040" > /mephi-web/index.html
 
+# Вывод содержимого главной страницы
+curl http://localhost/
+
+# Сохранение артефактов
+curl http://localhost/ > /home/marinafilyanova/curl.out
+history > /home/marinafilyanova/history.out
 ```
-
-
-   
-   72  echo "-:curator1 curator2:LOCAL" >> /etc/security/access.conf 
-   73  account required pam_access.so
-   74  grep -q "account.*pam_access.so" /etc/pam.d/login || echo "account required pam_access.so" >> /etc/pam.d/login
-   75  echo "minlen = 12" >> /etc/security/pwquality.conf
-   76  chage -M 90 user1
-   77  chage -M 90 user2
-   78  chage -M 90 user3
-   79  chage -M 90 curator1
-   80  chage -M 90 curator2
-   81  sed -i 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS 90/' /etc/login.defs 
-   82  sed -i 's/^PASS_MIN_LEN.*/PASS_MIN_LEN 12/' /etc/login.defs 
-   83  echo "Hello from Student: 373040" > /mephi-web/index.html
-   84  curl http://localhost/
-   85  nano /etc/nginx/nginx.conf
-   86  systemctl restart nginx
-   87  curl http://localhost/
-   88  curl http://localhost/ > /home/marinafilyanova/curl.out
-   89  history > /home/marinafilyanova/history.out
 
 ## Описание артефактов (файлов в репозитории)
 
